@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\LombaController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -36,6 +36,32 @@ Route::get('/admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.
 Route::put('/admins/{id}', [AdminController::class, 'update'])->name('admins.update');
 Route::delete('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
 Route::post('admins/pdf', [AdminController::class,'store'])->name('admins.pdf');
+
+
+
+
+Route::get('/lombas', [LombaController::class, 'index'])->name('lombas.index');
+
+// Route untuk menampilkan halaman tambah lomba
+Route::get('/lombas/create', [LombaController::class, 'create'])->name('lombas.create');
+
+// Route untuk menyimpan data lomba baru
+Route::post('/lombas', [LombaController::class, 'store'])->name('lombas.store');
+
+// Route untuk menampilkan halaman edit lomba
+Route::get('/lombas/{lomba}/edit', [LombaController::class, 'edit'])->name('lombas.edit');
+
+// Route::put('/lombas/{lomba}', [LombaController::class, 'update'])->name('lombas.update');
+
+
+// Route untuk mengupdate data lomba
+Route::put('/lombas/{lomba}', [LombaController::class, 'update'])->name('lombas.update');
+
+// Route untuk menghapus data lomba
+Route::delete('/lombas/{lomba}', [LombaController::class, 'destroy'])->name('lombas.destroy');
+
+
+Route::get('/lombas/cetak', [LombaController::class, 'cetak'])->name ('lombas.cetak');
 
 
 

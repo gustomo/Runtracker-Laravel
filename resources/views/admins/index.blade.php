@@ -93,7 +93,16 @@
             </ul>
         </nav>
     </div>
-    
+    @if ($errors->any())
+        <div class="error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <a class="add-new" href="{{ route('admins.create') }}">Tambah Data Baru</a>
     <form action="{{ route('admins.pdf') }}" method="post">
         @csrf
